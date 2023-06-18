@@ -1,3 +1,1 @@
 # rlist
-Personal reading list
-~~~~~~~~~~~~~~~~~~~~~
