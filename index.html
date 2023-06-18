@@ -1,18 +1,176 @@
-<!doctype html>
+<!DOCTYPE html>
+<html lang="uk">
 
-<html lang="en">
 <head>
-  <meta charset="utf-8">
-
-  <title>page template</title>
-  <meta name="description" content="HTML5">
-  <meta name="author" content="psiwell">
-
-  <link rel="stylesheet" href="css/styles.css?v=1.0">
+    <meta charset="utf-8">
+    <title>Reading list</title>
+    <meta name="description" content="What I’m currently reading. My years in books.">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="psiwell">
 </head>
 
 <body>
-fsdfs
-<script src="js/scripts.js"></script>
+    <header>
+        <nav class="tabs is-centered is-boxed is-small">
+            <ul>
+                <li><a class="tab active is-active" onclick="openTab(event,'2023')">2023</a></li>
+                <li><a class="tab " onclick="openTab(event,'2022')">2022</a></li>
+                <li><a class="tab " onclick="openTab(event,'2021')">2021</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="ml-2 mr-2">
+        <h1 class="title has-text-centered mb-3 mt-3">Reading list</h1>
+        <div class="content-tab" id="2023">
+            <div class="container ">
+                <div class="table-container">
+                    <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth" style="white-space:nowrap;">
+                        <thead>
+                            <tr>
+                                <th>Date Read</th>
+                                <th>Title</th>
+                                <th>Author</th>
+                                <th>Published</th>
+                                <th>Status</th>
+                                <th>Rating</th>
+                            </tr>
+                        </thead>
+                        <tbody class="is-family-monospace">
+                            <tr>
+                                <td>2023-06-18</td>
+                                <td>Moby-Dick</td>
+                                <td>Herman Melville</td>
+                                <td>1851</td>
+                                <td>CR</td>
+                                <td>☆☆☆☆☆</td>
+                            </tr>
+                            <tr>
+                                <td>2023-06-12</td>
+                                <td>1Q84</td>
+                                <td>Haruki Murakami</td>
+                                <td>2009</td>
+                                <td>R</td>
+                                <td>★★★☆☆</td>
+                            </tr>
+                            <tr>
+                                <td>2023-06-02</td>
+                                <td>Billy Summers</td>
+                                <td>Stephen King</td>
+                                <td>2021</td>
+                                <td>R</td>
+                                <td>★★★☆☆</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="content-tab mt-3" style="display:none" id="2022">
+            <div class="container ">
+                <div class="table-container">
+                    <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth" style="white-space:nowrap;">
+                        <thead>
+                            <tr>
+                                <th>Date Read</th>
+                                <th>Title</th>
+                                <th>Author</th>
+                                <th>Published</th>
+                                <th>Status</th>
+                                <th>Rating</th>
+                            </tr>
+                        </thead>
+                        <tbody class="is-family-monospace">
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>☆☆☆☆☆</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>☆☆☆☆☆</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>☆☆☆☆☆</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="content-tab mt-3" style="display:none" id="2021">
+            <div class="container ">
+                <div class="table-container">
+                    <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth" style="white-space:nowrap;">
+                        <thead>
+                            <tr>
+                                <th>Date Read</th>
+                                <th>Title</th>
+                                <th>Author</th>
+                                <th>Published</th>
+                                <th>Status</th>
+                                <th>Rating</th>
+                            </tr>
+                        </thead>
+                        <tbody class="is-family-monospace">
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>☆☆☆☆☆</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>☆☆☆☆☆</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>☆☆☆☆☆</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer></footer>
+    <script>
+    function openTab(evt, tabName) {
+        var i, x, tablinks;
+        x = document.getElementsByClassName("content-tab");
+        for (i = 0; i < x.length; i++) { x[i].style.display = "none"; } tablinks = document.getElementsByClassName("tab");
+        for (i = 0; i < x.length; i++) { tablinks[i].className = tablinks[i].className.replace(" active", ""); } document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+    </script>
 </body>
+
 </html>
