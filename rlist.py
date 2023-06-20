@@ -2,20 +2,28 @@ import csv
 import pandas as pd
 from termcolor import colored, cprint
 from tabulate import tabulate
+from datetime import date
 
 reading_list = []
 
+from datetime import datetime
+
+now = datetime.now()
+current = now.strftime("%Y%m%-d")
+
+
 def add_book():
-    date = input("Дата:" ).strip().title()
-    title = input("Назва: ").strip().title()
-    author = input("Автор: ").strip().title()
-    year = input("Рік публікації: ").strip()
-    rating = input("Рейтинг: ").strip()
+    date = input("Дата:").strip() or current.strip()
+    title = input("Назва: ").strip() or "?"
+    author = input("Автор: ").strip() or "?"
+    year = input("Рік публікації: ").strip() or "?"
+    rating = input("Рейтинг (1/5 -> 5/5): ").strip() or "☆☆☆☆☆"
 
     book = f"{date},{title},{author},{year},{rating}\n"
 
     with open("books.csv", "a") as reading_list:
         reading_list.write(book)
+
 
 def get_all_books():
     books = []
@@ -24,19 +32,25 @@ def get_all_books():
         for book in reading_list:
             date, title, author, year, rating = book.strip().split(",")
 
-            books.append({
-                "date": date,
-                "title": title,
-                "author": author,
-                "year": year,
-                "rating": rating
-            })
+            books.append(
+                {
+                    "date": date,
+                    "title": title,
+                    "author": author,
+                    "year": year,
+                    "rating": rating,
+                }
+            )
 
     return books
 
+
 def show_books(books):
-    for book in books:        
-        cprint(f" - {book['date']}, {book['title']}, {book['author']}, ({book['year']}), {book['rating']}", "light_grey")        
+    for book in books:
+        print(
+            f" ~ {book['date']}, {book['title']}, {book['author']}, ({book['year']}), {book['rating']}"
+        )
+
 
 menu_prompt = """
 Будь ласка, оберіть один з варіантів:
@@ -49,12 +63,15 @@ menu_prompt = """
 
 selected_option = input(menu_prompt).strip().lower()
 
+
 def save_books():
-    with open('allbooks.txt', 'w') as f:
+    with open("rlist.txt", "w") as f:
         f.write(allbooks)
-headers=["ДАТА","НАЗВА","АВТОР(и)","РІК","РЕЙТИНГ"] 
-readinglist = pd.read_csv('books.csv')
-allbooks = (tabulate(readinglist, headers, tablefmt="grid"))
+
+
+headers = ["ДАТА", "НАЗВА", "АВТОР(и)", "РІК", "РЕЙТИНГ"]
+readinglist = pd.read_csv("books.csv")
+allbooks = tabulate(readinglist, headers, tablefmt="simple_grid")
 
 while selected_option != "q":
     if selected_option == "a":
@@ -70,5 +87,5 @@ while selected_option != "q":
     else:
         print("")
         print(f"Sorry, '{selected_option}' is not a valid option.")
-        
+
     selected_option = input(menu_prompt).strip().lower()
