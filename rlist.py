@@ -2,11 +2,9 @@ import csv
 import pandas as pd
 from termcolor import colored, cprint
 from tabulate import tabulate
-from datetime import date
+from datetime import date, datetime
 
 reading_list = []
-
-from datetime import datetime
 
 now = datetime.now()
 current = now.strftime("%Y%m%-d")
@@ -53,12 +51,11 @@ def show_books(books):
 
 
 menu_prompt = """
-Будь ласка, оберіть один з варіантів:
 
-- 'a' - додати до списку  нову книжку 
-- 'l' - переглянути список читання
-- 's' - зберегти список читання до текстового файлу
-- 'q' - завершити роботу з програмою
+    'a' - додати до списку нову книгу 
+    'l' - переглянути список читання
+    's' - зберегти список читання до текстового файлу
+    'q' - завершити роботу з програмою
 """
 
 selected_option = input(menu_prompt).strip().lower()
@@ -83,9 +80,17 @@ while selected_option != "q":
         print("")
     elif selected_option == "s":
         save_books()
-        cprint("    Saved ..", "light_green")
+        cprint("\nСписок збережено у файлі ", end="")
+        cprint(
+            "rlist.txt",
+            "light_green",
+            end="\n",
+        )
     else:
-        print("")
-        print(f"Sorry, '{selected_option}' is not a valid option.")
-
+        cprint("\nВаріанта ", end="")
+        cprint(f"{selected_option}", "light_red", attrs=["blink"], end="")
+        cprint(
+            " в програмі поки немає. Будь ласка, оберіть один з доступних варіантів",
+            end="\n",
+        )
     selected_option = input(menu_prompt).strip().lower()
