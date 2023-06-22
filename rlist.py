@@ -94,3 +94,5 @@ while selected_option != "q":
             end="\n",
         )
     selected_option = input(menu_prompt).strip().lower()
+
+ #super gut gemacht! @Anja's comment
